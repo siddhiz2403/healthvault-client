@@ -11,32 +11,39 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import MyRecords from './pages/MyRecords';
 import Upload from './pages/Upload';
+import Notifications from './pages/Notifications';
+import DoctorPortal from './pages/DoctorPortal';
 import { AuthProvider } from './context/AuthContext';
+import { RecordsProvider } from './context/RecordsContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
-          <Header />
-          <Navbar />
+      <RecordsProvider>
+        <Router>
+          <div className="App">
+            <Header />
+            <Navbar />
 
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-              <Route path="/records" element={<ProtectedRoute><MyRecords /></ProtectedRoute>} />
-              <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
-            </Routes>
-          </main>
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path="/records" element={<ProtectedRoute><MyRecords /></ProtectedRoute>} />
+                <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
+                <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
+                <Route path="/doctor" element={<DoctorPortal />} />
+              </Routes>
+            </main>
 
-          <Footer />
-        </div>
-      </Router>
+            <Footer />
+          </div>
+        </Router>
+      </RecordsProvider>
     </AuthProvider>
   );
 }
