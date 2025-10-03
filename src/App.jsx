@@ -16,6 +16,7 @@ import DoctorPortal from './pages/DoctorPortal';
 import { AuthProvider } from './context/AuthContext';
 import { RecordsProvider } from './context/RecordsContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
                 <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
                 <Route path="/doctor" element={<DoctorPortal />} />
+                <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               </Routes>
             </main>
 
