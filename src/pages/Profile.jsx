@@ -1,4 +1,3 @@
-// src/pages/Profile.jsx
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
@@ -22,11 +21,8 @@ export default function Profile() {
     try {
       const raw = localStorage.getItem(storageKey(user.healthId));
       if (raw) setProfile(JSON.parse(raw));
-      else {
-        // seed with user.name if present
-        setProfile(prev => ({ ...prev, name: user.name || '' }));
-      }
-    } catch (e) { /* ignore */ }
+      else setProfile(prev => ({ ...prev, name: user.name || '' }));
+    } catch (e) { }
   }, [user]);
 
   const save = () => {

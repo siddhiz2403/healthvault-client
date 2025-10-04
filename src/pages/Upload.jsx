@@ -1,4 +1,3 @@
-// src/pages/Upload.jsx
 import React, { useContext, useState } from 'react';
 import { RecordsContext } from '../context/RecordsContext';
 import { AuthContext } from '../context/AuthContext';

@@ -17,11 +17,6 @@ export default function Dashboard() {
       </div>
 
       <div style={{ height: 18 }} />
-
-      <div className="page-card">
-        <h2 style={{ marginTop: 0 }}>Quick Features</h2>
-        <Features />
-      </div>
     </div>
   );
 }

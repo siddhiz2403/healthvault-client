@@ -1,4 +1,3 @@
-// src/App.jsx
 import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
@@ -13,10 +12,10 @@ import MyRecords from './pages/MyRecords';
 import Upload from './pages/Upload';
 import Notifications from './pages/Notifications';
 import DoctorPortal from './pages/DoctorPortal';
+import Profile from './pages/Profile';
 import { AuthProvider } from './context/AuthContext';
 import { RecordsProvider } from './context/RecordsContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import Profile from './pages/Profile';
 
 function App() {
   return (

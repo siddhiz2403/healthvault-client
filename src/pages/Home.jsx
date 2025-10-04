@@ -1,11 +1,31 @@
-import Hero from '../components/Hero'
+import React from 'react';
+import Hero from '../components/Hero';
 
-function Home() {
+export default function Home() {
   return (
-    <div className="page-card">
+    <>
       <Hero />
-    </div>
-  )
-}
+      <div className="page-card">
+        <h2 style={{ marginTop: 0 }}>Welcome to HealthVault</h2>
+        <p style={{ color: 'var(--muted)' }}>
+          Securely store and manage prescriptions, lab reports, vaccination records and full medical history — all tied to your unique Health ID.
+        </p>
 
-export default Home
+        <div style={{ display: 'flex', gap: 12, marginTop: 18, flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: 220 }}>
+            <strong>Secure</strong>
+            <p style={{ margin: 6, color: 'var(--muted)' }}>Encrypted local demo (replace with backend for production).</p>
+          </div>
+          <div style={{ flex: 1, minWidth: 220 }}>
+            <strong>Patient first</strong>
+            <p style={{ margin: 6, color: 'var(--muted)' }}>Records require patient approval before moving to their vault.</p>
+          </div>
+          <div style={{ flex: 1, minWidth: 220 }}>
+            <strong>Fast demo</strong>
+            <p style={{ margin: 6, color: 'var(--muted)' }}>Seeded demo records let judges try the full flow immediately.</p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

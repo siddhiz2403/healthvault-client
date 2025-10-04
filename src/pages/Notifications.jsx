@@ -1,4 +1,3 @@
-// src/pages/Notifications.jsx
 import React, { useContext } from 'react';
 import { RecordsContext } from '../context/RecordsContext';
 import { AuthContext } from '../context/AuthContext';
