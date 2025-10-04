@@ -1,3 +1,4 @@
+// src/context/RecordsContext.jsx
 import React, { createContext, useEffect, useState } from 'react';
 
 export const RecordsContext = createContext();
@@ -90,11 +91,17 @@ export function RecordsProvider({ children }) {
     const item = pending.find(x => x.id === id);
     if (!item) return;
     setPending(prev => prev.filter(x => x.id !== id));
+    // when approving, push into records
     setRecords(prev => [{ ...item, approvedAt: new Date().toISOString(), source: 'doctor' }, ...prev]);
   };
 
   const denyPending = (id) => {
     setPending(prev => prev.filter(x => x.id !== id));
+  };
+
+  // NEW: remove record (by id)
+  const removeRecord = (id) => {
+    setRecords(prev => prev.filter(r => r.id !== id));
   };
 
   return (
@@ -104,9 +111,12 @@ export function RecordsProvider({ children }) {
       addRecord,
       addPending,
       approvePending,
-      denyPending
+      denyPending,
+      removeRecord,
+      // expose setter only if you need it (avoid direct usage)
+      setRecords
     }}>
       {children}
     </RecordsContext.Provider>
-  );
+  );
 }

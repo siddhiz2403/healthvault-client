@@ -1,49 +1,48 @@
+// src/pages/MyRecords.jsx
 import React, { useContext, useState } from 'react';
 import { RecordsContext } from '../context/RecordsContext';
-import { AuthContext } from '../context/AuthContext';
 import RecordModal from '../components/RecordModal';
 
 export default function MyRecords() {
-  const { records } = useContext(RecordsContext);
-  const { user } = useContext(AuthContext);
+  const { records, removeRecord } = useContext(RecordsContext);
   const [selected, setSelected] = useState(null);
 
-  const myRecords = records.filter(r => r.patientId === user?.healthId);
+  if (!records) return <div className="page-card"><p>Loading...</p></div>;
 
   return (
     <div className="page-card">
       <h1>My Health Records</h1>
 
-      {myRecords.length === 0 ? (
+      {records.length === 0 ? (
         <p style={{ color: 'var(--muted)' }}>No records yet.</p>
       ) : (
-        <table style={{ width: '100%', marginTop: 16, borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ background: '#e6f2fb', textAlign: 'left' }}>
-              <th style={{ padding: '8px' }}>Type</th>
-              <th style={{ padding: '8px' }}>Source</th>
-              <th style={{ padding: '8px' }}>Doctor</th>
-              <th style={{ padding: '8px' }}>Date</th>
-              <th style={{ padding: '8px' }}>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myRecords.map((rec) => (
-              <tr key={rec.id} style={{ borderBottom: '1px solid #eef6fb' }}>
-                <td style={{ padding: '8px' }}>{rec.type}</td>
-                <td style={{ padding: '8px' }}>{rec.source || (rec.doctor === 'Self' ? 'Patient' : 'Doctor')}</td>
-                <td style={{ padding: '8px' }}>{rec.doctor}</td>
-                <td style={{ padding: '8px' }}>{rec.date}</td>
-                <td style={{ padding: '8px' }}>
-                  <button className="cta-btn" style={{ padding: '6px 12px' }} onClick={() => setSelected(rec)}>View</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div style={{ display: 'grid', gap: 12 }}>
+          {records.map((rec) => (
+            <div key={rec.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #eef6fb', padding: 12, borderRadius: 8 }}>
+              <div>
+                <div style={{ fontWeight: 700 }}>{rec.type} {rec.fileName ? <small style={{ marginLeft: 8, color:'#666' }}>({rec.fileName})</small> : null}</div>
+                <div style={{ color: 'var(--muted)', fontSize: 13 }}>{rec.doctor} · {rec.date}</div>
+              </div>
+
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button className="cta-btn" onClick={() => setSelected(rec)}>Details</button>
+                <button style={{ background:'#ef4444', color:'#fff', border:'none', padding:'8px 10px', borderRadius:8, cursor:'pointer' }}
+                        onClick={() => {
+                          if (window.confirm('Are you sure you want to delete this record?')) {
+                            removeRecord(rec.id);
+                            alert('Record deleted.');
+                          }
+                        }}>
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
 
+      {/* modal to show full details */}
       <RecordModal record={selected} onClose={() => setSelected(null)} />
-    </div>
-  );
+    </div>
+  );
 }
