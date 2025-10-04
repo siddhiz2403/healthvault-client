@@ -63,3 +63,28 @@ footer { width: 100%; text-align: center; padding: 20px 12px; color: var(--muted
 @media (max-width:720px) {
   .nav-inner, .page-card, .hero { max-width: 92%; }
 }
+
+.dashboard-container {
+  text-align: center;
+  padding: 40px;
+}
+
+.dashboard-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.dashboard-cards .card {
+  background: #f5f7fb;
+  border-radius: 12px;
+  padding: 20px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 200px;
+}
+
+.card.total { border-top: 4px solid #3b82f6; }
+.card.approved { border-top: 4px solid #10b981; }
+.card.pending { border-top: 4px solid #f59e0b; }
