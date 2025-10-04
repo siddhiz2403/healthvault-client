@@ -88,3 +88,115 @@ footer { width: 100%; text-align: center; padding: 20px 12px; color: var(--muted
 .card.total { border-top: 4px solid #3b82f6; }
 .card.approved { border-top: 4px solid #10b981; }
 .card.pending { border-top: 4px solid #f59e0b; }
+
+/* My Records styling */
+.records-container {
+  padding: 40px;
+  text-align: center;
+}
+
+.records-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.record-card {
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 280px;
+  text-align: left;
+  position: relative;
+}
+
+.record-card h3 {
+  margin-top: 0;
+}
+
+.record-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.delete-btn {
+  background: #ef4444;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #fc5757;
+}
+
+button {
+  transition: all 0.2s ease;
+}
+button:hover {
+  opacity: 0.85;
+}
+
+.upload-page {
+  padding: 40px;
+  text-align: center;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #f9fafb;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form label {
+  width: 100%;
+  text-align: left;
+  font-weight: 600;
+  color: #222;
+}
+
+.upload-form input,
+.upload-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.upload-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.upload-form button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.upload-form button:hover {
+  background: #1e40af;
+}
